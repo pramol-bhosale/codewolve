@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Oswald:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body{
+    background-color: #f7f7f7;
+font-family: 'Poppins', sans-serif;
+color: #3e4348;
+}
+.nav_buttons{
+background-image: linear-gradient(173.04deg,#04bf7e 50.82%,#48d16e 84.97%);
+border:none;
+color: white;
+
+}
+.q_num{
+background-color: green;
+
+}
+.innerItem{
+    box-shadow: 0.25rem 0.25rem 0.6rem rgba(0,0,0,0.05), 0 0.5rem 1.125rem rgba(75,0,0,0.05);
+    border-radius:10px;
+    
+}
+.innerItem div{
+  border-bottom: 3px solid #5ebd21;
+  padding:0 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight:800;
+}

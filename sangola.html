@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Secrete of Google Crawlers.</title>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+  <meta name="author" content="Studentxweb">
+  <meta name="theme-color" content="#ffffff">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content=" Today I'll provide
+
+  a ultimate guide
+  to how Google crawls pages,
+  
+  and provide definitions
+  
+  for terms such as crawl rate,
+  
+  crawl demand, and crawl budget.">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="codestylefukc.css">
+        <link rel="canonical" href="">
+        <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [{
+                "@type": "Question",
+                "name": "What is Crawl Demand ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Crawl demand is how much the content is desired by Google. It is affected by URLs that haven't been crawled by Google before, and by Google's estimation on how often content changes on the non-URLs."
+                }
+              },{
+                "@type": "Question",
+                "name": "What is Crawl Rate ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Google computes your site crawl rate, which represents the maximum number of concurrent connections a crawler may use to crawl your site."
+                }
+              },{
+                "@type": "Question",
+                "name": "When Crawl Rate goes up?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "If the site is quick and consistent to respond to crawlers, the rate goes up if there is demand from indexing."
+                }
+              },{
+                "@type": "Question",
+                "name": "When Crawl goes down ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "If the site slows down or responds with server errors, the rate goes down and Google crawls less."
+                }
+              },{
+                "@type": "Question",
+                "name": "What is Crawl Budget?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Taking crawl rate and crawl demand together, we can define crawl budget as the number of URLs Google can and wants to crawl."
+                }
+              }]
+            }
+            </script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Secrete of the Google Crawler and Crawling.">
+        <meta property="og:type" content="article">
+        <meta property="og:URL" content="https://studentxweb.com/">
+        <meta property="og:image" content="https://studentxweb.com/webimage/crawler-traps.jpg">
+        <meta property="og:admins" content="Prathmesh Lavate">
+        <meta property="og:site_name" content="Studentxweb">
+        <meta property="og:description" content="The ultimate guide
+        to how Google crawls pages,
+        
+        and provide definitions
+        
+        for terms such as crawl rate,
+        
+        crawl demand, and crawl budget.">
+        <style>
+            .imp{
+                padding: 0.3rem;
+                border: 2px dashed #04bf7e;
+                font-weight: bolder;
+                margin:2rem 0;
+            }
+            h1{
+                font-size: 2rem;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div id="progressBar"></div>
+        <div class="navigation_bar">
+            <div id="menu-bar">
+                <div id="menu" onclick="onClickMenu()">
+                    <div id="bar1" class="bar"></div>
+                    <div id="bar2" class="bar"></div>
+                    <div id="bar3" class="bar"></div>
+                </div>
+                <ul class="nav" id="nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="menu-bg" id="menu-bg"></div>
+            <script src="script.js"></script>
+            <span>StudentXweb</span>
+        </div>
+        <article>
+       <div class="code_post_container">
+        <div class="container_for_code">
+            <h1>All about Crawling in Google - Ultimate Guide</h1>
+            <br>
+<div class="authorInfo">
+    <img src="webimage/authorbro.jpg" alt="adfad"> <span>Pramol</span><samp style="font-size: 0.2rem;margin:0 0.4rem;">&#9899</samp><samp>10 min Read</samp>
+</div>
+            <br>
+            <img src="webimage/seoimage google garage seo.jpg" alt="google garage seo">
+            <br><br>
+            <h2>Let's learn more about Google Crawlers and Google Crawling</h2>
+            <p>
+Today
+I'll dive into the
+
+Search Console Crawl Stats
+
+report, which
+
+provides data on crawl
+
+requests, average
+
+response time, and more.
+            </p>
+<fieldset id="field">
+    <legend><strong>Table of content</strong></legend>
+    <a onclick="move('one')">Crawling Trend Chart in Crawl Report</a>
+    <a onclick="move('two')">The total download size from your site during crawling.</a>
+    <a onclick="move('three')">The average page response time for a crawl request</a>
+    <a onclick="move('four')">Host status in Crawl Report</a>
+ 
+    <a onclick="move('five')">Error section in Crawl Report</a>
+        
+    <a onclick="move('six')">Crawl Request Cards in Crawl Report</a>
+    <a onclick="move('seven')">Summary</a>
+           
+     
+</fieldset>
+
+            
+           
+
+<p>
+To find out how often
+
+Google crawls your site
+
+and what the responses were, you
+
+should use the Search Console
+
+Crawl Stats report,
+
+which provides
+
+statistics about Google's
+
+crawling behavior.</p>
+<p>
+Here are some questions you can
+
+answer with the data provided.
+<ul>
+    <li>
+        What's your site's
+
+        general availability?
+    </li>
+    <li>
+
+        What's the average page
+
+        response for a crawl request?
+    </li>
+
+    <li>
+        How many requests
+
+        were made by Google
+        
+        to your site in
+        
+        the last 90 days?
+    </li>
+</ul>
+
+
+<p>
+
+Let's dive in to learn
+
+more about the report.
+
+Log in to Search
+
+Console and find
+
+the Settings page, where you
+
+can open the Crawl Stats report.</p>
+<p>
+<strong>
+    Know that this report is
+    
+    only available for properties
+    
+    at the domain level.
+    
+   </strong>
+
+<p>
+In the summary page, you'll
+
+find a lot of information.
+
+The main elements are the
+<ul>
+    <li>
+        Crawling trends chart  
+    </li>
+    <li>
+        Host status details
+    </li>
+    <li>
+        Crawl request breakdown
+    </li>
+</ul>
+</p>
+<h2 id="one">1) Crawling Trend Chart in Crawl Report</h2>
+<p>
+    The chart shows the
+
+    trends for three metrics.
+    
+    The total crawl request
+    
+    for URLs on your site,
+    
+    whether successful or not.    
+
+Request resources hosted outside
+
+of your site are not counted.</p><p>
+
+So if your images are
+
+served on another domain,
+
+such as a content
+
+delivery network or CDN,
+
+they will not appear here.
+</p>
+<h2 id="two">What is Total download size in Crawl Report ?</h2>
+   <p>
+    The total download size from
+
+    your site during crawling.
+If Google casts a page resource
+
+that is used by multiple pages,
+
+the resource is only
+
+requested the first time.
+</p>
+<h2 id="three">
+    What is page
+
+    response time in Crawl Report?
+</h2>
+<p>
+The average page
+
+response time for a crawl
+
+request to retrieve
+
+the page content.
+
+</p><p class="praImportant">
+    <samp>&#128204</samp>
+This metric does not include
+
+retrieving page resources
+
+such as scripts,
+
+images, and other
+
+linked or embedded content.
+
+</p>
+
+<p>
+
+    
+The response time
+
+does not account
+
+for page rendering time.
+
+</p>
+<p>
+Look for major spikes,
+
+drops, and trends
+
+over time in your data.</p>
+<p>
+
+For example, if you see a
+
+significant drop in total crawl
+
+requests, make sure no one added
+
+a new robots.txt to your site.
+
+Or maybe your site is
+
+responding slowly to Googlebot.
+
+These might be understood as a
+
+sign your server cannot handle
+
+all the requests.
+</p>
+<p>
+
+Another example would
+
+be a consistent increase
+
+in average response time.
+
+This might not affect your
+
+crawl rate immediately,
+
+but it's a good indicator
+
+that your servers might not
+
+be handling all the load.
+Ultimately, this may affect
+
+user experience, too.
+</p>
+<h2 id="four">What is Host status Report in Crawl Report ? </h2>
+<p>
+
+
+The host status is
+
+an easy way for you
+
+to check your site's general
+
+availability in the last 90
+
+days.</p><p>
+
+If you verified your website
+
+as a domain property,
+
+you will see all child
+
+hosts separately here.</p>
+<p>
+    
+This can be very handy to
+
+evaluate all your hosts
+
+performance in one place.
+
+</p>
+<p>
+
+    When you click to get
+
+    the host status details,
+    
+    you'll find three categories.
+    
+</p>
+<h2 id="five">
+  What is  Error section in Crawl Report?
+</h2>
+<p>
+    
+Errors in this section mean
+
+Google cannot crawl your site
+
+for a technical reason.
+
+Robots.txt fetch tells
+
+you the failure rate
+
+when crawling your
+
+robots.txt file.
+</p>
+<p>
+    
+Your site is not required
+
+to have a robots.txt file,
+
+but it must return the
+
+successful response 200 or 404
+
+when asked for this file.
+
+</p><p>
+    
+If Googlebot has a connection
+
+issue, for example, a 503,
+
+it will stop crawling your site.
+</p>
+<h3>XWhat is DNS Resolution in Crawl Report?</h3>
+<p>
+    
+DNS resolution tells
+
+you when your DNS server
+
+didn't recognize your
+
+host name or didn't
+
+respond during crawling.
+If you see an issue here,
+
+check with your register
+
+to make sure your site
+
+is correctly set up
+
+and that your server is properly
+
+connected to the internet.
+</p>
+<h3>What is Server Connectivity in Crawl Report?</h3>
+<p>
+Server connectivity tells
+
+you when your server
+
+was unresponsive or did not
+
+provide the full response
+
+for your URL during a crawl.
+</p>
+
+<strong>
+    If you're seeing spikes or
+
+consistent connectivity issues
+
+here, you might need to
+
+talk to your provider
+
+about increasing your capacity
+
+or fixing availability issues.
+</strong>
+<p>
+    
+If Google found at least
+
+one of those errors
+
+on your site in
+
+the last week, you
+
+will find a warning alerting
+
+you of problems last week.
+
+</p>
+<strong>
+    Dig deeper into the
+
+error and fix it.
+</strong>
+<p>
+
+    
+If Google found at least
+
+one error on your site
+
+in the last 90 days, but it
+
+occurred more than a week ago,
+
+you will see a warning that
+
+you had problems in the past.
+
+
+You should check
+
+your server logs
+
+or contact the
+
+developer to review
+
+what the problems were
+
+and decide whether you
+
+need to take any action.
+</p>
+<p>
+If Google didn't find
+
+any crawl availability
+
+issues on your site in the
+
+past 90 days, you're all green.
+
+Good job.
+</p>
+<h2 id="six">
+    Crawl Request Cards in Crawl Report
+</h2>
+
+<p>
+
+    
+The crawl request cards
+
+show several breakdowns
+
+to help you understand
+
+what Google crawlers found
+
+in your website.
+</p>
+<p>
+    
+There are four
+
+available breakdowns.
+
+</p>
+<h3>I) 
+    Crawl response
+    </h3>
+     <p>
+        
+Crawl response
+
+shows the responses
+
+that Google received
+
+when crawling your site.
+
+Common response types would be
+
+200, 301, 404 or server errors.
+    </p>
+<h3>II) Crawl file type </h3>
+<p>
+    Crawl file type shows file
+
+types returned by the request.
+
+Common file types would be HTML,
+
+image, article or JavaScript.
+
+</p>
+<h3>
+    III) Crawl Purpose
+</h3>
+<p>
+    Crawl purpose could be discovery
+
+when a URL is new to Google,
+
+or refresh for a
+
+re-crawl of a known page.
+
+
+</p>
+<h3>IV) GoogleBot type</h3>
+<p>
+    Google type shows the
+
+user agent used by Google
+
+to make the crawl request.
+
+For example, smartphone,
+
+desktop, image, and others.
+
+</p>
+<p>
+    Click any row to drill
+
+down to that value
+
+and review its strengths
+
+and specific sample URLs.
+</p>
+<h2 id="seven">Summary of Crawl Report in Google search Console</h2>
+<p>
+
+    To help you understand and
+
+    optimize Google's crawling,
+    
+    you should use the Search
+    
+    Console Crawl Stats report.
+    <ul>
+        <li>
+
+            Use the summary page
+
+            chart to analyze
+            
+            crawling volume and trends.
+            
+        </li>
+        <li>
+
+            Use the host status details
+
+            to check your site's
+            
+            general availability.
+        </li>
+        <li>
+            And use the crawl
+
+request breakdown
+
+to understand what
+
+Googlebot is finding
+
+when crawling your website.
+        </li>
+    </ul>
+</p>
+
+
+
+    <br><br>
+    <p>
+        <h3>
+         Join our Telegram channel to get daily Tips that will help your website.
+         <a href="https://t.me/all_about_seo_info">Join now</a>
+        </h3>
+    </p>
+      <br><br><br>
+         <h3>Recent Blogs</h3>
+   <p>
+      <ul>
+        <li><a href="https://studentxweb.com/7-Ways-to-verify-site-ownership-on-Google-Search-Console.html">How to verify site ownership on Google Search Console ?</a></li>
+         <li><a href="https://studentxweb.com/7-Ways-to-verify-site-ownership-on-Google-Search-Console.html">How to add User to Google Search Console ?</a></li>
+        <li><a href="Index-coverage-status-in-Google-Search-Console.html">How to Analyse Index Coverage in Search Console like PRO ?</a></li>
+        <li><a href="ultimate-google-garage-seo.html">Ultimate SEO Guide to Rank Website on Google.</a></li>
+        <li><a href="Removals-in-Google-Search-Console-.html">How to use Removals Tool in Google Search Console ?</a></li>
+         <li><a href="google-garage-seo.html">How Website help to grow Business?</a></li>
+         <li><a href="analyse-digital-presence.html">How to analyse Website like Pro?</a></li>
+         <li>
+             <a href="Sitemap-in-Google-Search-console.html">Essential guide for the Sitemap in Google search Console</a>
+         </li>
+      </ul>
+   </p>
+  
+
+        </div>
+       </div>
+       
+       <div class="footer">
+        <h2><a style="font-size:inherit;" href="index.html">StudentXweb.com</a></h2>
+        <a href="home.php">Home</a>
+        <a href="terms and conditions.html">Terms</a>
+        <span>Copyright &copy 2021</span>
+      </div>
+    </article>
+    <script>
+        
+
+    document.addEventListener("scroll",
+    function(){
+        var scrollTop=document.documentElement["scrollTop"] || document.body["scrollTop"];
+        var scrollBottom=(document.documentElement["scrollHeight"] || document.body["scrollHeight"])-document.documentElement.clientHeight;
+        scrollPercent=scrollTop/scrollBottom*100+"%";
+        document.getElementById("progressBar").style.setProperty("--scroll",scrollPercent);
+    },
+{passive: true }
+    );
+    </script>
+    </body>
+</html>
+<script>
+    var tocvisible=1;
+     var btn=document.getElementById("tocbtn");
+    btn.addEventListener("click",
+    function(){
+        
+        if(tocvisible == 1){
+            document.getElementById("tocList").style.display="none";
+            document.getElementById("tocbtn").innerHTML="&#128204";
+            tocvisible=0;
+        }
+        else{
+
+            document.getElementById("tocList").style.display="block";
+            document.getElementById("tocbtn").innerHTML="&#10060";
+            tocvisible=1;
+        }
+    });
+   
+
+
+</script>
+<script>
+  function move(destination){
+      var id='#'+destination;
+    document.querySelector(id).scrollIntoView({ 
+  behavior: 'smooth' 
+});
+  }
+  function onClickMenu(){
+	document.getElementById("menu").classList.toggle("change");
+	document.getElementById("nav").classList.toggle("change");
+	
+	document.getElementById("menu-bg").classList.toggle("change-bg");
+}
+</script>

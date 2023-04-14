@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Oswald:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+body{
+    background-color: #f3fcfd;
+    font-family: 'Lato', sans-serif;
+    color: #464646;
+}
+.img-logo{
+    width:60px;
+}
